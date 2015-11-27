@@ -103,11 +103,12 @@ record.prototype.create = function(domainName,recordData) {
 /**
  * https://developers.digitalocean.com/#update-a-domain-record
  *
+ * @param domainName
  * @param recordId
- * @param newdata
+ * @param recordAttrs 
  */
-record.prototype.update = function(domainName,recordId,name) {
-    return createPromise(this.dropkit.createOption({ method: 'PUT' , path: '/v2/domains/' + domainName + '/records/' + recordId}),JSON.stringify({name: name}));
+record.prototype.update = function(domainName,recordId,recordAttrs) {
+    return createPromise(this.dropkit.createOption({ method: 'PUT' , path: '/v2/domains/' + domainName + '/records/' + recordId}),JSON.stringify(recordAttrs));
 
 };
 
